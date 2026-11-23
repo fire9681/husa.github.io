@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -14,7 +15,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -32,24 +34,24 @@
             margin-bottom: 60px;
         }
 
+        /* 個人頭像 */
         .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid #0f3460;
-    margin: 0 auto 20px;
-    background: #0f3460;
-    overflow: hidden;
-}
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #0f3460;
+            margin: 0 auto 20px;
+            background: #0f3460;
+            overflow: hidden;
+        }
 
         .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    border-radius: 50%;
-}
-        
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            border-radius: 50%;
+        }
 
         h1 {
             color: #e94560;
@@ -62,6 +64,7 @@
             font-size: 1.2em;
         }
 
+        /* 區塊 */
         .section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
@@ -83,6 +86,7 @@
             margin-bottom: 15px;
         }
 
+        /* 技能 */
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -97,6 +101,7 @@
             font-size: 0.9em;
         }
 
+        /* 社群連結 */
         .links {
             display: flex;
             justify-content: center;
@@ -119,6 +124,7 @@
             color: #1a1a2e;
         }
 
+        /* 專案 */
         .project {
             background: rgba(15, 52, 96, 0.5);
             padding: 20px;
@@ -136,34 +142,116 @@
             font-size: 0.95em;
         }
 
-        /* YouTube Music Player */
+        /* 自訂音樂播放器 */
         .music-player {
             background: rgba(15, 52, 96, 0.5);
             padding: 20px;
             border-radius: 8px;
         }
 
-        .music-player h3 {
-            color: #e94560;
-            margin-bottom: 15px;
+        .music-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        .music-player iframe {
-            display: block;
+        .music-icon {
+            width: 55px;
+            height: 55px;
+            background: #1a1a2e;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .music-info h3 {
+            color: #e94560;
+            margin-bottom: 3px;
+        }
+
+        .music-info p {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        /* YouTube 播放器容器 */
+        .music-video {
+            position: relative;
             width: 100%;
             aspect-ratio: 16 / 9;
-            height: auto;
-            border: none;
+            background: #000;
             border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .music-video #youtube-player,
+        .music-video iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 自訂播放控制 */
+        .custom-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .custom-controls button {
+            background: #e94560;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            font-size: 17px;
+            flex-shrink: 0;
+            transition: 0.3s;
+        }
+
+        .custom-controls button:hover {
+            background: #ff6078;
+            transform: scale(1.08);
+        }
+
+        .custom-controls button:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 3px;
+        }
+
+        .progress-area {
+            flex: 1;
+            min-width: 0;
+        }
+
+        #progress {
+            width: 100%;
+            accent-color: #e94560;
+            cursor: pointer;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            color: #a0a0a0;
+            font-size: 12px;
         }
 
         .music-description {
             color: #a0a0a0;
             font-size: 0.9em;
-            margin-top: 12px;
+            margin-top: 15px;
             margin-bottom: 0;
         }
 
+        /* 頁尾 */
         footer {
             text-align: center;
             color: #666;
@@ -172,7 +260,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Mobile Responsive */
+        /* 手機版 */
         @media (max-width: 600px) {
             .container {
                 padding: 35px 15px;
@@ -194,6 +282,16 @@
                 padding: 10px 16px;
             }
         }
+
+        @media (max-width: 400px) {
+            .music-player {
+                padding: 15px;
+            }
+
+            .custom-controls {
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -203,108 +301,310 @@
         <!-- Header -->
         <header>
             <div class="avatar">
-                 <img src="assets/profile.png" alt="個人頭像">
+                <img src="assets/profile.png" alt="個人頭像">
             </div>
-            <h1>Your Name</h1>
-            <p class="tagline">Security Researcher / Penetration Tester</p>
+
+            <h1>萊落/fire</h1> 
+            <p class="tagline">History/ACGN/CTF</p>
 
             <div class="links">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="mailto:your@email.com">Email</a>
+                <a href="https://www.facebook.com/jerry.huang.54379236/?locale=zh_TW"
+                   target="_blank" rel="noopener noreferrer">FB</a>
+
+                <a href="https://www.instagram.com/fire_limeluo/"
+                   target="_blank" rel="noopener noreferrer">IG</a>
+
+                <a href="mailto:firefire9681@email.com">Email</a>
             </div>
         </header>
 
         <!-- About Me -->
         <section class="section">
             <h2>About Me</h2>
+
             <p>
-                嗨！我是一名對資訊安全充滿熱情的研究者。專注於 Web 應用程式安全、
-                滲透測試以及漏洞研究。目前正在學習各種攻防技術，並記錄我的學習歷程。
+                安安，這裡是萊落/fire，也可以叫一些讓我認得出來在叫我的稱呼!!
+                INTP 19y MCNDU MIS 一個暑假會變高雄人的北部人
+                
+                
             </p>
+
             <p>
-                我相信分享知識能讓整個社群變得更強大，因此建立了這個網站來記錄我的
-                研究成果和學習筆記。
+                目前在學習法文、日文還有資安內容，也開始跑咖(最近都在朱雫)
+            </p>
+
+            <p>
+                沒有特別雷的事，可以放心聊，以互相尊重為主
+                可能會雷到你的事:
+                會用大陸的軟體(如bilibili、回覆時間不固定、有時小爆言(?
             </p>
         </section>
 
         <!-- Skills -->
         <section class="section">
-            <h2>Skills</h2>
+            <h2>坑單</h2>
+
             <div class="skills">
-                <span class="skill-tag">Web Security</span>
-                <span class="skill-tag">Penetration Testing</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Linux</span>
-                <span class="skill-tag">Network Security</span>
-                <span class="skill-tag">OWASP Top 10</span>
-                <span class="skill-tag">Burp Suite</span>
-                <span class="skill-tag">Nmap</span>
+                <span class="skill-tag">86不存在的戰區</span>
+                <span class="skill-tag">藍色時期</span>
+                <span class="skill-tag">少女與戰車</span>
+                <span class="skill-tag">莉可麗絲</span>
+                <span class="skill-tag">沉默魔女的祕密</span>
+                <span class="skill-tag">敗北女角太多了！</span>
+                <span class="skill-tag">魔女之旅</span>
+                <span class="skill-tag">JOJO的奇妙冒險</span>
             </div>
         </section>
 
         <!-- Projects -->
         <section class="section">
-            <h2>Projects</h2>
+            <h2>hobby</h2>
 
             <div class="project">
-                <h3>🔍 Security Scanner</h3>
-                <p>一個自動化的網站安全掃描工具，整合了多種檢測模組。</p>
+                <h3>🔍 歷史</h3>
+                <p>
+                    主要都是軍事史這個方面為主，不過其他部分只要有時間都會讀，有資料都歡迎一起聊!
+                    目前有在研究的主題:
+                    拿破崙時期的大軍團編制和戰役、一戰和二戰的歐洲戰場、中國近代史
+                
+                </p>
             </div>
 
             <div class="project">
-                <h3>📝 Vulnerability Writeups</h3>
-                <p>記錄我在 CTF 比賽和實際滲透測試中發現的漏洞分析。</p>
+                <h3>🎮 追競</h3>
+                <p>
+                    以LOL的為主，LCK、LCP、LPL為主，希望有一天可以去lck park看比賽
+                    主隊: CFO、DK、T1
+                    選手:showmaker、keria、kino
+                    
+                    近期也有看一些CS跟VCT的比賽，還在學習中!
+                </p>
             </div>
 
             <div class="project">
-                <h3>🛠️ Pentest Toolkit</h3>
-                <p>自己開發的滲透測試輔助腳本集合。</p>
+                <h3>🎙️ 推し</h3>
+               <ul>
+                   <li>86不存在的戰區－芙拉蒂蕾娜·米利傑</li>
+                   <li>魔女之旅－伊蕾娜</li>
+                   <li>槍彈辯駁－七海千秋</li>
+                   <li>少女與戰車－米卡</li>
+                   <li>少女前線－HK416</li>
+                   <li>子午計畫－澪REI、祈Iruni</li>
+                   <li>箱箱－瑪格麗特諾爾絲</li>
+                   <li>朱雫－千佳</li>
+                   <li>月讀一番－月夜</li>
+                </ul>
             </div>
         </section>
 
-        <!-- Recent Posts -->
-        <section class="section">
-            <h2>Recent Posts</h2>
-
-            <div class="project">
-                <h3>SQL Injection 攻擊手法詳解</h3>
-                <p>深入解析 SQL Injection 的各種變形與防禦方式。</p>
-            </div>
-
-            <div class="project">
-                <h3>如何開始學習滲透測試</h3>
-                <p>給新手的滲透測試學習路線圖與資源推薦。</p>
-            </div>
-        </section>
-
-        <!-- YouTube Music -->
+        <!-- Custom YouTube Music Player -->
         <section class="section">
             <h2>🎵 My Music</h2>
 
             <div class="music-player">
-                <h3>Now Playing</h3>
 
-                <!-- 將下面的 VIDEO_ID 換成 YouTube 影片 ID -->
-                <iframe
-                    src="https://youtu.be/7HgJIAUtICU?si=dMKVamroMBYTSKEq"
-                    title="YouTube Music Player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
+                <div class="music-info">
+                    <div class="music-icon">🎧</div>
+
+                    <div>
+                        <h3>Now Playing</h3>
+                        <p>Zzz</p>
+                    </div>
+                </div>
+
+                <!-- YouTube 影片 -->
+                <div class="music-video">
+                    <div id="youtube-player"></div>
+                </div>
+
+                <!-- 自訂播放控制 -->
+                <div class="custom-controls">
+
+                    <button
+                        id="play-btn"
+                        type="button"
+                        onclick="togglePlay()"
+                        aria-label="播放或暫停">
+                        ▶
+                    </button>
+
+                    <div class="progress-area">
+                        <input
+                            type="range"
+                            id="progress"
+                            min="0"
+                            max="100"
+                            value="0"
+                            step="0.1"
+                            aria-label="歌曲播放進度"
+                            oninput="seekMusic(this.value)"
+                        >
+
+                        <div class="time-display">
+                            <span id="current-time">00:00</span>
+                            <span id="duration">00:00</span>
+                        </div>
+                    </div>
+
+                    <button
+                        id="mute-btn"
+                        type="button"
+                        onclick="toggleMute()"
+                        aria-label="靜音或取消靜音">
+                        🔊
+                    </button>
+
+                </div>
 
                 <p class="music-description">
                     Enjoy the music while exploring my website.
                 </p>
+
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>© 2025 Your Name. Built with ❤️ and hosted on GitHub Pages.</p>
+            <p>© 2026 limeluo_fire. Built with ❤️ and hosted on GitHub Pages.</p>
         </footer>
 
     </div>
+
+    <!-- YouTube IFrame API -->
+    <script>
+        let player;
+        let progressTimer;
+
+        const VIDEO_ID = "7HgJIAUtICU";
+
+        // 載入 YouTube API
+        function loadYouTubeAPI() {
+            const script = document.createElement("script");
+            script.src = "https://www.youtube.com/iframe_api";
+            document.head.appendChild(script);
+        }
+
+        // API 載入完成後建立播放器
+        function onYouTubeIframeAPIReady() {
+
+            player = new YT.Player("youtube-player", {
+
+                videoId: VIDEO_ID,
+
+                playerVars: {
+                    controls: 0,
+                    disablekb: 1,
+                    playsinline: 1,
+                    rel: 0,
+                    origin: window.location.origin
+                },
+
+                events: {
+                    onReady: function(event) {
+
+                        document.getElementById("duration").textContent =
+                            formatTime(event.target.getDuration());
+
+                        progressTimer = setInterval(updateProgress, 500);
+                    },
+
+                    onStateChange: function(event) {
+
+                        const button =
+                            document.getElementById("play-btn");
+
+                        if (event.data === YT.PlayerState.PLAYING) {
+                            button.textContent = "❚❚";
+                        } else {
+                            button.textContent = "▶";
+                        }
+
+                        if (event.data === YT.PlayerState.ENDED) {
+                            document.getElementById("progress").value = 0;
+                            document.getElementById("current-time").textContent = "00:00";
+                        }
+                    },
+
+                    onError: function(event) {
+                        console.error("YouTube 播放錯誤：", event.data);
+                    }
+                }
+            });
+        }
+
+        // 播放與暫停
+        function togglePlay() {
+
+            if (!player || !player.getPlayerState) return;
+
+            if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+        }
+
+        // 更新播放進度
+        function updateProgress() {
+
+            if (!player || !player.getDuration) return;
+
+            const duration = player.getDuration();
+            const current = player.getCurrentTime();
+
+            if (!duration) return;
+
+            document.getElementById("progress").value =
+                (current / duration) * 100;
+
+            document.getElementById("current-time").textContent =
+                formatTime(current);
+
+            document.getElementById("duration").textContent =
+                formatTime(duration);
+        }
+
+        // 調整歌曲播放位置
+        function seekMusic(value) {
+
+            if (!player || !player.getDuration) return;
+
+            const duration = player.getDuration();
+
+            player.seekTo(duration * value / 100, true);
+        }
+
+        // 靜音切換
+        function toggleMute() {
+
+            if (!player) return;
+
+            const button = document.getElementById("mute-btn");
+
+            if (player.isMuted()) {
+                player.unMute();
+                button.textContent = "🔊";
+            } else {
+                player.mute();
+                button.textContent = "🔇";
+            }
+        }
+
+        // 秒數轉換成 mm:ss
+        function formatTime(seconds) {
+
+            seconds = Math.floor(seconds || 0);
+
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+
+            return String(minutes).padStart(2, "0") + ":" +
+                   String(remainingSeconds).padStart(2, "0");
+        }
+
+        // 載入 API
+        loadYouTubeAPI();
+    </script>
+
 </body>
 </html>
